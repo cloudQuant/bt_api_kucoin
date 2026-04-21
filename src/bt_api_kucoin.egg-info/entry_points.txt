@@ -1,0 +1,2 @@
+[bt_api.plugins]
+kucoin = bt_api_kucoin.plugin:register_plugin
