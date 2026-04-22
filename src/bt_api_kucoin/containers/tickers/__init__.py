@@ -1,8 +1,8 @@
 from bt_api_kucoin.containers.tickers.kucoin_ticker import (
-    KuCoinTickerData,
     KuCoinRequestTickerData,
-    KuCoinWssTickerData,
     KuCoinStatsTickerData,
+    KuCoinTickerData,
+    KuCoinWssTickerData,
 )
 
 __all__ = [

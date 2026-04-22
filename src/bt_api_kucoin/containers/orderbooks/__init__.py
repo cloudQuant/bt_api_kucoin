@@ -1,8 +1,8 @@
 from bt_api_kucoin.containers.orderbooks.kucoin_orderbook import (
+    KuCoinLevel3OrderBookData,
     KuCoinOrderBookData,
     KuCoinRequestOrderBookData,
     KuCoinWssOrderBookData,
-    KuCoinLevel3OrderBookData,
 )
 
 __all__ = [

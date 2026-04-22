@@ -20,8 +20,8 @@ from bt_api_base.feeds.feed import Feed
 from bt_api_base.logging_factory import get_logger
 from bt_api_base.rate_limiter import RateLimiter, RateLimitRule, RateLimitScope, RateLimitType
 
-from bt_api_kucoin.exchange_data.kucoin_exchange_data import KuCoinExchangeDataSpot
 from bt_api_kucoin.errors.kucoin_translator import KuCoinErrorTranslator
+from bt_api_kucoin.exchange_data.kucoin_exchange_data import KuCoinExchangeDataSpot
 
 
 class KuCoinRequestData(Feed):

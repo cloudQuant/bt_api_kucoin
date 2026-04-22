@@ -1,8 +1,8 @@
 from bt_api_kucoin.exchange_data.kucoin_exchange_data import (
     KuCoinExchangeData,
-    KuCoinExchangeDataSpot,
     KuCoinExchangeDataFutures,
     KuCoinExchangeDataMargin,
+    KuCoinExchangeDataSpot,
 )
 
 __all__ = [

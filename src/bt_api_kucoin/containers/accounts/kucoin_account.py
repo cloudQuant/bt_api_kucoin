@@ -41,7 +41,7 @@ class KuCoinAccountData(AccountData):
 
         self.currency: str | None = None
 
-    def init_data(self) -> "KuCoinAccountData":
+    def init_data(self) -> KuCoinAccountData:
         raise NotImplementedError("Subclasses must implement init_data")
 
     def get_all_data(self) -> dict[str, Any]:
