@@ -135,9 +135,7 @@ class KuCoinRequestAccountData(KuCoinAccountData):
                 for acc in data
             ]
         else:
-            return [
-                KuCoinRequestBalanceData(self.account_info, self.symbol_name, self.asset_type, True)
-            ]
+            return [KuCoinRequestBalanceData(self.account_info, self.symbol_name, self.asset_type, True)]
 
 
 class KuCoinWssAccountData(KuCoinAccountData):

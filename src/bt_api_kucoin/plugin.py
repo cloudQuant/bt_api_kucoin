@@ -8,9 +8,7 @@ from bt_api_kucoin import __version__
 from bt_api_kucoin.registry_registration import register_kucoin
 
 
-def register_plugin(
-    registry: type[ExchangeRegistry], runtime_factory: type[GatewayRuntimeRegistrar]
-) -> PluginInfo:
+def register_plugin(registry: type[ExchangeRegistry], runtime_factory: type[GatewayRuntimeRegistrar]) -> PluginInfo:
     register_kucoin(registry)
 
     return PluginInfo(

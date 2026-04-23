@@ -89,15 +89,11 @@ class KuCoinRequestDataFutures(KuCoinRequestData):
         return [], status
 
     def get_depth(self, symbol, limit=20, extra_data=None, **kwargs):
-        path, params, extra_data = self._get_depth(
-            symbol=symbol, limit=limit, extra_data=extra_data, **kwargs
-        )
+        path, params, extra_data = self._get_depth(symbol=symbol, limit=limit, extra_data=extra_data, **kwargs)
         return self.request(path, params=params, extra_data=extra_data, is_sign=False)
 
     def async_get_depth(self, symbol, limit=20, extra_data=None, **kwargs):
-        path, params, extra_data = self._get_depth(
-            symbol=symbol, limit=limit, extra_data=extra_data, **kwargs
-        )
+        path, params, extra_data = self._get_depth(symbol=symbol, limit=limit, extra_data=extra_data, **kwargs)
         self.submit(
             self.async_request(path, params=params, extra_data=extra_data, is_sign=False),
             callback=self.async_callback,
@@ -235,18 +231,14 @@ class KuCoinRequestDataFutures(KuCoinRequestData):
         return path, params, extra_data
 
     def get_account(self, currency=None, extra_data=None, **kwargs):
-        path, params, extra_data = self._get_account(
-            currency=currency, extra_data=extra_data, **kwargs
-        )
+        path, params, extra_data = self._get_account(currency=currency, extra_data=extra_data, **kwargs)
         return self.request(path, params=params, extra_data=extra_data, is_sign=True)
 
     def get_balance(self, symbol=None, extra_data=None, **kwargs):
         return self.get_account(currency=symbol, extra_data=extra_data, **kwargs)
 
     def async_get_account(self, currency=None, extra_data=None, **kwargs):
-        path, params, extra_data = self._get_account(
-            currency=currency, extra_data=extra_data, **kwargs
-        )
+        path, params, extra_data = self._get_account(currency=currency, extra_data=extra_data, **kwargs)
         self.submit(
             self.async_request(path, params=params, extra_data=extra_data, is_sign=True),
             callback=self.async_callback,
@@ -344,9 +336,7 @@ class KuCoinRequestDataFutures(KuCoinRequestData):
         return path, params, extra_data
 
     def cancel_order(self, order_id=None, extra_data=None, **kwargs):
-        path, params, extra_data = self._cancel_order(
-            order_id=order_id, extra_data=extra_data, **kwargs
-        )
+        path, params, extra_data = self._cancel_order(order_id=order_id, extra_data=extra_data, **kwargs)
         return self.request(path, params=params, extra_data=extra_data, is_sign=True)
 
     def _get_open_orders(self, symbol=None, extra_data=None, **kwargs) -> Any | None:
@@ -366,9 +356,7 @@ class KuCoinRequestDataFutures(KuCoinRequestData):
         return path, params, extra_data
 
     def get_open_orders(self, symbol=None, extra_data=None, **kwargs):
-        path, params, extra_data = self._get_open_orders(
-            symbol=symbol, extra_data=extra_data, **kwargs
-        )
+        path, params, extra_data = self._get_open_orders(symbol=symbol, extra_data=extra_data, **kwargs)
         return self.request(path, params=params, extra_data=extra_data, is_sign=True)
 
     def query_order(self, order_id=None, extra_data=None, **kwargs):

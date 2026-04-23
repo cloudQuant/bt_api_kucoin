@@ -111,9 +111,7 @@ class KuCoinRequestDataSpot(KuCoinRequestData):
         data = self.request(path, params=params, extra_data=extra_data, is_sign=True)
         return data
 
-    def _cancel_order(
-        self, order_id=None, client_order_id=None, extra_data=None, **kwargs
-    ) -> Any | None:
+    def _cancel_order(self, order_id=None, client_order_id=None, extra_data=None, **kwargs) -> Any | None:
         if order_id is None and client_order_id is None:
             raise ValueError("Either order_id or client_order_id must be provided")
 
@@ -165,15 +163,11 @@ class KuCoinRequestDataSpot(KuCoinRequestData):
         return path, params, extra_data
 
     def cancel_all_orders(self, symbol=None, extra_data=None, **kwargs):
-        path, params, extra_data = self._cancel_all_orders(
-            symbol=symbol, extra_data=extra_data, **kwargs
-        )
+        path, params, extra_data = self._cancel_all_orders(symbol=symbol, extra_data=extra_data, **kwargs)
         data = self.request(path, params=params, extra_data=extra_data, is_sign=True)
         return data
 
-    def _get_order(
-        self, order_id=None, client_order_id=None, extra_data=None, **kwargs
-    ) -> Any | None:
+    def _get_order(self, order_id=None, client_order_id=None, extra_data=None, **kwargs) -> Any | None:
         request_type = "get_order"
 
         if order_id:
@@ -205,10 +199,7 @@ class KuCoinRequestDataSpot(KuCoinRequestData):
         if input_data and "data" in input_data:
             data = input_data["data"]
             if isinstance(data, list):
-                return [
-                    KuCoinRequestOrderData({"data": item}, symbol_name, asset_type, True)
-                    for item in data
-                ], status
+                return [KuCoinRequestOrderData({"data": item}, symbol_name, asset_type, True) for item in data], status
             return [KuCoinRequestOrderData(input_data, symbol_name, asset_type, True)], status
         return [], status
 
@@ -248,16 +239,11 @@ class KuCoinRequestDataSpot(KuCoinRequestData):
 
         if input_data and "data" in input_data and "items" in input_data["data"]:
             items = input_data["data"]["items"]
-            return [
-                KuCoinRequestOrderData({"data": item}, symbol_name, asset_type, True)
-                for item in items
-            ], status
+            return [KuCoinRequestOrderData({"data": item}, symbol_name, asset_type, True) for item in items], status
         return [], status
 
     def get_open_orders(self, symbol=None, extra_data=None, **kwargs):
-        path, params, extra_data = self._get_open_orders(
-            symbol=symbol, extra_data=extra_data, **kwargs
-        )
+        path, params, extra_data = self._get_open_orders(symbol=symbol, extra_data=extra_data, **kwargs)
         data = self.request(path, params=params, extra_data=extra_data, is_sign=True)
         return data
 
@@ -327,9 +313,7 @@ class KuCoinRequestDataSpot(KuCoinRequestData):
         return [], status
 
     def get_depth(self, symbol, limit=20, extra_data=None, **kwargs):
-        path, params, extra_data = self._get_depth(
-            symbol=symbol, limit=limit, extra_data=extra_data, **kwargs
-        )
+        path, params, extra_data = self._get_depth(symbol=symbol, limit=limit, extra_data=extra_data, **kwargs)
         data = self.request(path, params=params, extra_data=extra_data, is_sign=False)
         return data
 
@@ -393,9 +377,7 @@ class KuCoinRequestDataSpot(KuCoinRequestData):
 
         if input_data and "data" in input_data:
             klines = input_data["data"]
-            return [
-                KuCoinRequestBarData(kline, symbol_name, asset_type, True) for kline in klines
-            ], status
+            return [KuCoinRequestBarData(kline, symbol_name, asset_type, True) for kline in klines], status
         return [], status
 
     def get_kline(
@@ -453,22 +435,15 @@ class KuCoinRequestDataSpot(KuCoinRequestData):
 
         if input_data and "data" in input_data:
             trades = input_data["data"]
-            return [
-                KuCoinRequestTradeData({"data": trade}, symbol_name, asset_type, True)
-                for trade in trades
-            ], status
+            return [KuCoinRequestTradeData({"data": trade}, symbol_name, asset_type, True) for trade in trades], status
         return [], status
 
     def get_deals(self, symbol, limit=None, extra_data=None, **kwargs):
-        path, params, extra_data = self._get_deals(
-            symbol=symbol, limit=limit, extra_data=extra_data, **kwargs
-        )
+        path, params, extra_data = self._get_deals(symbol=symbol, limit=limit, extra_data=extra_data, **kwargs)
         data = self.request(path, params=params, extra_data=extra_data, is_sign=False)
         return data
 
-    def _get_account(
-        self, currency=None, account_type=None, extra_data=None, **kwargs
-    ) -> Any | None:
+    def _get_account(self, currency=None, account_type=None, extra_data=None, **kwargs) -> Any | None:
         request_type = "get_account"
         path = self._params.get_rest_path(request_type)
         params = {}
@@ -497,9 +472,7 @@ class KuCoinRequestDataSpot(KuCoinRequestData):
 
         if input_data and "data" in input_data:
             accounts = input_data["data"]
-            return [
-                KuCoinRequestAccountData(acc, symbol_name, asset_type, True) for acc in accounts
-            ], status
+            return [KuCoinRequestAccountData(acc, symbol_name, asset_type, True) for acc in accounts], status
         return [], status
 
     def get_account(self, currency=None, account_type=None, extra_data=None, **kwargs):
@@ -578,9 +551,7 @@ class KuCoinRequestDataSpot(KuCoinRequestData):
     async_get_tick = async_get_ticker
 
     def async_get_depth(self, symbol, limit=20, extra_data=None, **kwargs):
-        path, params, extra_data = self._get_depth(
-            symbol=symbol, limit=limit, extra_data=extra_data, **kwargs
-        )
+        path, params, extra_data = self._get_depth(symbol=symbol, limit=limit, extra_data=extra_data, **kwargs)
         self.submit(
             self.async_request(path, params=params, extra_data=extra_data, is_sign=False),
             callback=self.async_callback,
